@@ -2,15 +2,22 @@ import { useState } from 'react';
 import { Form, Input, Button, Card, message, Tabs } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
 
 export default function Login() {
   const [loading, setLoading] = useState(false);
+  const { login, signup, isLoggedIn } = useAuth();
   const navigate = useNavigate();
+
+  if (isLoggedIn) {
+    navigate('/chat');
+    return null;
+  }
 
   const onLogin = async (values: { username: string; password: string }) => {
     try {
       setLoading(true);
-      console.log(values.username, values.password);
+      await login(values.username, values.password);
       message.success('Login successful!');
       navigate('/chat');
     } catch (error: any) {
@@ -23,7 +30,7 @@ export default function Login() {
   const onSignup = async (values: { username: string; password: string }) => {
     try {
       setLoading(true);
-      console.log(values.username, values.password);
+      await signup(values.username, values.password);
       message.success('Signup successful!');
       navigate('/chat');
     } catch (error: any) {
@@ -148,6 +155,3 @@ export default function Login() {
     </div>
   );
 }
-
-
-
