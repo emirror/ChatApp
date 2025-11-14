@@ -6,7 +6,7 @@ import {
   removeRefreshToken,
   setAccessToken,
   setRefreshToken,
-} from '../utils/storage';
+} from '../utils/token';
 import { request, requestWithoutAuth } from '../utils/request';
 
 interface AuthProviderProps {

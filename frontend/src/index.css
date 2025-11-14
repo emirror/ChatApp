@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+#root {
+    min-height: 100vh;
+}
+
+@theme {
+    --color-primary: #ce0202;
+    /* Replace with your desired primary color hex code */
+}
