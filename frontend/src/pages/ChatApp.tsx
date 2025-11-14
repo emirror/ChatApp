@@ -5,9 +5,9 @@ import { useQuery } from '@tanstack/react-query';
 import io, { Socket } from 'socket.io-client';
 import useAuth from '../hooks/useAuth';
 import { request } from '../utils/request';
-import { getAccessToken } from '../utils/storage';
+import { getAccessToken } from '../utils/token';
 import ChatWindow from '../components/ChatWindow';
-import { User } from '../types';
+import type { User } from '../types';
 
 const { Header, Sider, Content } = Layout;
 
